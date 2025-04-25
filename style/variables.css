@@ -1,0 +1,10 @@
+:root {
+  --primary-color-blue: #4F86F7;
+  --accent-color-red: #f08080;
+  --bg-light: #fefefe;
+  --primary-text: #333;
+  --secondary-text: #777777;
+  --border-color: #E0E0E0;
+  --radius: 12px;
+  --gap: 1rem;
+}

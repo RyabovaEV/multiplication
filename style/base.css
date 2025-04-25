@@ -1,0 +1,34 @@
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-light); /* почти белый */
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 15%;
+}
+
+.main {
+  flex: 1; /* займет всё оставшееся место */
+  overflow-y: auto;
+}
+
+.footer {
+  height: 10%;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 2em;
+}

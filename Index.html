@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Тренажер таблицы умножения</title>
     <script src="app.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
   </head>
   <body>
     <div class="wrapper">
       <header class="header">
-        <h1 class="header__title title">Тренажер таблицы умножения</h1>
+        <div class="container">
+          <h1 class="header__title title">Тренажер таблицы умножения</h1>
+        </div>
       </header>
       <main class="main">
         <div class="container">
@@ -18,7 +24,7 @@
             <p class="choice-num__text">
               Выбери числа для тренировки и нажми "Начать"
             </p>
-            <div class="choice-num__items">
+            <div class="choice-num__items" data-choice-num-container>
               <button
                 class="choice-num__item"
                 type="button"
@@ -90,25 +96,29 @@
                 10
               </button>
             </div>
-            <button class="choice-num__btn">Начать</button>
+            <button class="choice-num__btn" data-choice-num-btn><i class="fas fa-play icon"></i> Начать</button>
           </section>
           <section class="main__multiplication">
             <div class="multiplication">
-              <div class="multiplication__question"></div>
-              <div class="multiplication__answer"></div>
-              <button class="multiplication__finish">Завершить!</button>
+              <div class="multiplication__question" data-multiplication-question></div>
+              <div class="multiplication__answer" >
+                <input type="text" placeholder="ответ" data-multiplication-answer>
+              </div>
+              <button class="multiplication__finish" data-multiplication-finish><i class="fas fa-flag-checkered icon"></i>Завершить!</button>
             </div>
           </section>
           <section class="main__result">
-            <div class="result">Результаты будут отображены тут</div>
+            <div class="result" data-result>Результаты будут отображены тут</div>
           </section>
         </div>
       </main>
       <footer class="footer">
-        <h2 class="footer__text text">
-          Учить таблицу умножения важно, потому что это ключ к уверенности в
-          математике — как буквы в чтении, так и числа в счёте!
-        </h2>
+        <div class="container">
+          <h2 class="footer__text text">
+            Учить таблицу умножения важно, потому что это ключ к уверенности в
+            математике — как буквы в чтении, так и числа в счёте!
+          </h2>
+        </div>
       </footer>
     </div>
   </body>
