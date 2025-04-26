@@ -1,10 +1,20 @@
 :root {
   --primary-color-blue: #4F86F7;
-  --accent-color-red: #f08080;
+  --accent-color-red: #d33636;
+  --accent-color-orange: #ffb347;
+  --accent-color-orange-dark: #e69a2e; /* чуть темнее */
+  --accent-color-orange-light: #ffd59b; /* чуть светлее */
   --bg-light: #fefefe;
   --primary-text: #333;
   --secondary-text: #777777;
+
   --border-color: #E0E0E0;
+  --border-color-blue: #4b84e6;
+
+  --hover-num-not-active: #dce9ff;
+  --hover-num-active: #4680edb8;
+  --hover-num-btn: #ffa22e;
+
   --radius: 12px;
   --gap: 1rem;
 }
