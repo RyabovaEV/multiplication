@@ -13,7 +13,9 @@
 }
 
 .choice-num__item {
-  padding: 0.7em 1.2em;
+  /* padding: 0.7em 1.2em; */
+  width: 3em;
+  height: 3em;
   font-size: 1em;
   border: 2px solid var(--border-color-blue);
   background-color: white;
@@ -50,11 +52,16 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s, opacity 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.choice-num__btn:hover {
+.choice-num__btn:not(:disabled):hover {
   background-color: var(--accent-color-orange-dark);
+  transform: scale(1.1);
+}
+
+.choice-num__btn:active {
+  transform: scale(1); 
 }
 
 .choice-num__btn:disabled {
@@ -63,47 +70,192 @@
   opacity: 0.6; /* делаем "приглушенной" */
 }
 
+.icon {
+  margin-right: .5em;
+}
 
 .multiplication {
   text-align: center;
-  margin-top: 2em;
+  margin-top: 4em;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  align-items: end;
+}
+
+.multiplication__block {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+  align-items: center;
+  padding: 1em;
+  border-top : 10px solid transparent;
+  border-bottom : 10px solid transparent;
+  border-image: linear-gradient(135deg, var(--primary-color-blue), var(--accent-color-orange)) 1; 
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  */
 }
 
 .multiplication__question {
-  font-size: 2.5em;
-  margin-bottom: 1em;
+  flex: 0 0 50%;
+  max-width: 50%;
+  font-size: 3.5em;
   font-weight: bold;
+  color: var(--primary-text);
+  padding: 1em;
+  background-color: var(--bg-light);
+  border: 2px solid var(--border-color-blue);
+  /* border-radius: 8px; */
 }
+
+/* .multiplication__question:hover {
+  transform: scale(1.05); 
+} */
 
 .multiplication__answer {
-  font-size: 1.5em;
-  margin-bottom: 1.5em;
+  flex: 0 0 30%;
+  max-width: 30%;
+  flex-grow: 0;
+  font-size: 3.5em;
+  text-align: center;
+  /* color: var(--primary-text); */
+  color: var(--accent-color-orange-dark);
+  background-color: var(--bg-light);
+  padding: 1em;
+  border: 2px solid var(--border-color-blue);
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
+.multiplication__answer:hover {
+  transform: scale(1.05); /* Увеличение при наведении */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Усиление тени при наведении */
+}
+
+/* Верный ответ — мягкий зеленоватый оттенок */
+.multiplication__answer.correct {
+  background-color: #e1f7e7; /* светло-зеленый фон */
+  border-color: #82d199;     /* мягкая зелёная рамка */
+  color: #2e7d32;            /* тёмно-зелёный текст */
+}
+
+/* Неверный ответ — мягкий красноватый оттенок */
+.multiplication__answer.incorrect {
+  background-color: #fdecea; /* светло-красный фон */
+  border-color: #f5a5a0;     /* мягкая красная рамка */
+  color: #c62828;            /* тёмно-красный текст */
+}
+
+/* Эффекты при наведении */
+.multiplication__answer.correct:hover,
+.multiplication__answer.incorrect:hover {
+  transform: scale(1.02); /* Очень лёгкое увеличение */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 .multiplication__finish {
-  background-color: var(--accent-color-red);
+  width: 30%;
+  background-color: var(--accent-color-red-light);
   color: white;
   padding: 0.7em 2em;
+  font-size: 1.2em;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .multiplication__finish:hover {
   background-color: var(--accent-color-red);
+  transform: scale(1.1); /* Увеличение при наведении */
 }
 
-.icon {
-  margin-right: 0.5em;
-  vertical-align: middle;
+.multiplication__finish:active {
+  transform: scale(1); /* Снижение масштаба при нажатии */
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.7em;
+  border-radius: 8px;
+  border: 2px solid var(--border-color-blue);
+  font-size: 1.5em;
+  color: var(--primary-text);
+  background-color: var(--bg-light);
+  transition: border-color 0.3s;
+}
+
+.input-field:focus {
+  border-color: var(--primary-color-blue);
+  outline: none; /* Убираем стандартный контур */
 }
 
 .result {
   margin-top: 2em;
   padding: 1em;
-  background-color: #ffffff;
+  background-color: var(--bg-light);
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  font-size: 1.2em;
+  color: var(--primary-text);
+}
+
+.result.success {
+  background-color: #eaffea; /* Светло-зеленый для успеха */
+}
+
+.result.error {
+  background-color: #ffeaea; /* Светло-красный для ошибки */
+}
+
+
+.multiplication__controls {
+  flex: 1 1 auto; /* занимает оставшиеся 20% */
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  margin-top: 1em;
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+  /* padding: 0.6em 1.5em; */
+  height: 3em;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  color: white;
+}
+
+
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--check {
+  background-color: var(--primary-color-blue);
+}
+
+.btn--check:hover:not(:disabled) {
+  background-color: #3a6fd3;
+  transform: scale(1.05);
+}
+
+.btn--next {
+  background-color: var(--accent-color-orange-dark);
+}
+
+.btn--next:hover:not(:disabled) {
+  background-color: #d08723;
+  transform: scale(1.05);
 }

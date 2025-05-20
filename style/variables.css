@@ -1,6 +1,7 @@
 :root {
   --primary-color-blue: #4F86F7;
   --accent-color-red: #d33636;
+  --accent-color-red-light: #eb7a7a;
   --accent-color-orange: #ffb347;
   --accent-color-orange-dark: #e69a2e; /* чуть темнее */
   --accent-color-orange-light: #ffd59b; /* чуть светлее */
