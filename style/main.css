@@ -1,3 +1,9 @@
+.choice-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .choice-num__text {
   font-size: 1.2em;
   margin-bottom: 1em;
@@ -65,98 +71,115 @@
 }
 
 .choice-num__btn:disabled {
-  background-color: var(--accent-color-orange-light); /* более светлый цвет */
+  background-color: var(--accent-color-orange-light);
   cursor: not-allowed;
-  opacity: 0.6; /* делаем "приглушенной" */
+  opacity: 0.6;
 }
 
 .icon {
   margin-right: .5em;
 }
 
+.main__multiplication {
+  margin-top: 1.5em;
+}
+
 .multiplication {
   text-align: center;
-  margin-top: 4em;
   display: flex;
   flex-direction: column;
   gap: 3em;
-  align-items: end;
+  align-items: center;
 }
 
 .multiplication__block {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.multiplication__example {
+  display: grid;
+  grid-template-columns: 120px 100px 30px; 
   align-items: center;
-  padding: 1em;
-  border-top : 10px solid transparent;
-  border-bottom : 10px solid transparent;
-  border-image: linear-gradient(135deg, var(--primary-color-blue), var(--accent-color-orange)) 1; 
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  */
+  gap: 0.5rem;
+  background-color: var(--bg-light, #f9f9f9);
+  border: 1px solid var(--border-color-blue, #ccc);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
 }
 
-.multiplication__question {
-  flex: 0 0 50%;
-  max-width: 50%;
-  font-size: 3.5em;
-  font-weight: bold;
-  color: var(--primary-text);
-  padding: 1em;
-  background-color: var(--bg-light);
-  border: 2px solid var(--border-color-blue);
-  /* border-radius: 8px; */
+[data-multiplication-question] {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* .multiplication__question:hover {
-  transform: scale(1.05); 
-} */
+
+.multiplication__input-wrapper {
+  position: relative;
+  width: 80px;
+}
+
 
 .multiplication__answer {
-  flex: 0 0 30%;
-  max-width: 30%;
-  flex-grow: 0;
-  font-size: 3.5em;
+  font-size: 1.25rem;
+  padding: 0.3rem 0.6rem;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid var(--border-color-blue, #ccc);
+  border-radius: 6px;
   text-align: center;
-  /* color: var(--primary-text); */
-  color: var(--accent-color-orange-dark);
-  background-color: var(--bg-light);
-  padding: 1em;
-  border: 2px solid var(--border-color-blue);
-  border-radius: 8px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
-.multiplication__answer:hover {
-  transform: scale(1.05); /* Увеличение при наведении */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Усиление тени при наведении */
-}
 
-/* Верный ответ — мягкий зеленоватый оттенок */
 .multiplication__answer.correct {
-  background-color: #e1f7e7; /* светло-зеленый фон */
-  border-color: #82d199;     /* мягкая зелёная рамка */
-  color: #2e7d32;            /* тёмно-зелёный текст */
+  border-color: var(--correct-color, green);
+  background-color: #eaffea;
 }
 
-/* Неверный ответ — мягкий красноватый оттенок */
 .multiplication__answer.incorrect {
-  background-color: #fdecea; /* светло-красный фон */
-  border-color: #f5a5a0;     /* мягкая красная рамка */
-  color: #c62828;            /* тёмно-красный текст */
+  border-color: var(--incorrect-color, red);
+  background-color: #ffeaea;
 }
 
-/* Эффекты при наведении */
-.multiplication__answer.correct:hover,
-.multiplication__answer.incorrect:hover {
-  transform: scale(1.02); /* Очень лёгкое увеличение */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.multiplication__wrong {
+  font-size: 1rem;
+  color: var(--incorrect-color, red);
+  margin-left: 0.5rem;
+  white-space: nowrap;
 }
 
+.multiplication__tooltip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: red;
+  background-color: #fff8f8;
+  border: 1px solid red;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 5;
+}
+
+.multiplication__tooltip.visible {
+  opacity: 1;
+}
 
 .multiplication__finish {
   width: 30%;
-  background-color: var(--accent-color-red-light);
+  background-color: var(--primary-color-blue);
   color: white;
   padding: 0.7em 2em;
   font-size: 1.2em;
@@ -167,32 +190,17 @@
 }
 
 .multiplication__finish:hover {
-  background-color: var(--accent-color-red);
-  transform: scale(1.1); /* Увеличение при наведении */
+  background-color: var(--primary-color-blue-dark);
+  transform: scale(1.1);
 }
 
 .multiplication__finish:active {
-  transform: scale(1); /* Снижение масштаба при нажатии */
-}
-
-.input-field {
-  width: 100%;
-  padding: 0.7em;
-  border-radius: 8px;
-  border: 2px solid var(--border-color-blue);
-  font-size: 1.5em;
-  color: var(--primary-text);
-  background-color: var(--bg-light);
-  transition: border-color 0.3s;
-}
-
-.input-field:focus {
-  border-color: var(--primary-color-blue);
-  outline: none; /* Убираем стандартный контур */
+  transform: scale(1);
 }
 
 .result {
-  margin-top: 2em;
+  margin-top: 3em;
+  margin-bottom: 2em;
   padding: 1em;
   background-color: var(--bg-light);
   border-radius: 10px;
@@ -202,60 +210,31 @@
   color: var(--primary-text);
 }
 
-.result.success {
-  background-color: #eaffea; /* Светло-зеленый для успеха */
-}
-
-.result.error {
-  background-color: #ffeaea; /* Светло-красный для ошибки */
-}
-
-
-.multiplication__controls {
-  flex: 1 1 auto; /* занимает оставшиеся 20% */
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1em;
+.result__clear-btn {
   margin-top: 1em;
-  width: 100%;
-}
-
-.btn {
-  width: 100%;
-  /* padding: 0.6em 1.5em; */
-  height: 3em;
-  font-size: 1em;
-  font-weight: bold;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s ease-in-out;
-  color: white;
-}
-
-
-
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.btn--check {
+  padding: 0.5em 1em;
+  font-size: 1rem;
   background-color: var(--primary-color-blue);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.btn--check:hover:not(:disabled) {
-  background-color: #3a6fd3;
-  transform: scale(1.05);
-}
-
-.btn--next {
+.result__clear-btn:hover {
   background-color: var(--accent-color-orange-dark);
 }
 
-.btn--next:hover:not(:disabled) {
-  background-color: #d08723;
-  transform: scale(1.05);
+@media (max-width: 800px) {
+  .choice-num__items {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.8em;
+    margin-bottom: 1.5em;
+  }
+  .multiplication__finish {
+    width: 250px;
+}
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Тренажер таблицы умножения</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script type="module" src="js/app.js"></script>
     <link rel="stylesheet" href="style/style.css" />
     <link
@@ -102,35 +103,7 @@
           </section>
           <section class="main__multiplication">
             <div class="multiplication">
-              <div class="multiplication__block">
-                <div
-                  class="multiplication__question"
-                  data-multiplication-question
-                >
-                  5 * 6
-                </div>
-                <input
-                  class="multiplication__answer"
-                  type="text"
-                  placeholder="?"
-                  data-multiplication-answer
-                />
-                <div class="multiplication__controls">
-                  <button
-                    class="btn btn--check"
-                    data-check-answer
-                    disabled
-                  >
-                  <i class="fas fa-check icon"></i>
-                  </button>
-                  <button
-                    class="btn btn--next"
-                    data-next-question
-                    disabled
-                  >
-                  <i class="fas fa-arrow-right icon"></i>
-                  </button>
-                </div>
+              <div class="multiplication__block" data-multiplication-block>
               </div>
               <button class="multiplication__finish" data-multiplication-finish>
                 <i class="fas fa-flag-checkered icon"></i> Завершить!
@@ -139,7 +112,7 @@
           </section>
           <section class="main__result">
             <div class="result" data-result>
-              Результаты будут отображены тут
+              <p>Результаты будут отображены тут</p>
             </div>
           </section>
         </div>
